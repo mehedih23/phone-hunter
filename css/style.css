@@ -8,3 +8,10 @@
     background: #e8a618;
     padding: 20px 0;
 }
+.card-footer.border-0 {
+    margin-top: -25px;
+}
+
+.all-data{
+    margin-top: -15px;
+}

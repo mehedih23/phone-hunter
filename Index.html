@@ -50,14 +50,40 @@
 
         <!-- Display Section Starts Here -->
         <section class="container mx-auto">
-            <div id="phones-div" class="row g-3 mb-5">
+            <div id="phones-div" class="row row-cols-1 row-cols-md-3 g-4">
 
             </div>
-            <div id="more-items" class="container text-center mb-3">
-                <button id="see-more" class="btn btn-outline-warning">See More</button>
+
+            <div id="more-items" class="container text-center my-3">
+                <button id="see-more" class="btn btn-outline-dark">See More</button>
             </div>
         </section>
         <!-- Display Section Ends Here -->
+
+        <section id="modal-section" class="container mx-auto">
+            <!-- Modal -->
+            <div class="modal fade" id="phone-details" tabindex="-1" aria-labelledby="phone-detailsLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="phone-detailsLabel">Phone Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-body" class="modal-body bg-dark">
+                            <!-- <img src="" alt="" srcset="">
+                            <h6>DisplaySize</h6>
+                            <p>chipSet</p>
+                            <p>storage</p>
+                            <p>memory</p> -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     </main>
