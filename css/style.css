@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+#search-section{
+    background: #e8a618;
+    padding: 20px 0;
+}
