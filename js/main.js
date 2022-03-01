@@ -1,4 +1,3 @@
-
 const getSearchValue = () => {
 
     const getSearchText = document.getElementById('search-txt').value;
@@ -8,7 +7,6 @@ const getSearchValue = () => {
     fetch(phoneUrl)
         .then(response => response.json())
         .then(data => loadData(data))
-
 };
 getSearchValue();
 
@@ -52,9 +50,9 @@ const moreDetails = (itemId) => {
 };
 
 const details = (data) => {
-    console.log(data);
-    const [faceID, accelerometer, gyro, proximity, compass, barometer] = data.mainFeatures.sensors;
-    const { WLAN, Blutooth, GPS, NFC, Radio, USB } = data.others;
+    // console.log(data);
+    const sensors = data.mainFeatures.sensors;
+
     const modalBody = document.getElementById('modal-body');
     modalBody.textContent = '';
     const div = document.createElement('div');
@@ -66,28 +64,18 @@ const details = (data) => {
     <p class="all-data text-white"><span class="text-warning">Storage :</span> ${data.mainFeatures.storage}</p>
     <p class="all-data text-white"><span class="text-warning">Memory :</span> ${data.mainFeatures.memory}</p>
     <p class="all-data text-white"><span class="text-warning">Sensors :</span> <br/>
-    ${faceID} <br/>
-    ${accelerometer} <br/>
-    ${gyro} <br/>
-    ${proximity} <br/>
-    ${compass} <br/>
-    ${barometer} <br/>
-    </p>
-    <p class="all-data text-white"><span class="text-warning">Others :</span> <br/>
-    WLAN : ${WLAN};<br/>
-    Blutooth : ${Blutooth};<br/>
-    GPS : ${GPS};<br/>
-    NFC : ${NFC};<br/>
-    Radio : ${Radio};<br/>
-    USB : ${USB};<br/>
+    ${[...sensors]}
+    </p >
     `;
+    const p = document.createElement('p');
+    for (const [key, value] of Object.entries(data.others)) {
+        p.classList.add('all-data');
+        p.classList.add('text-white');
+        p.innerHTML = `
+        <span class="text-warning">Others :</span> <br />
+        ${key}: ${value}
+        `;
+    };
     modalBody.appendChild(div);
+    modalBody.appendChild(p);
 };
-
-
-
-
-
-
-
-
