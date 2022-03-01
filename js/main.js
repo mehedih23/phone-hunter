@@ -85,9 +85,12 @@ const details = (data) => {
     div.innerHTML = `
         <img class="rounded-3" src="${data.image}" alt="" srcset="">
         <h6 class="mt-2 text-white">
-            <span class="text-warning">DisplaySize : </span>${data.mainFeatures.displaySize}
+            <span class="text-warning">Name : </span>${data.name}
         </h6>
         <p class="text-white">
+            <span class="text-warning">Display Size :</span> ${data.mainFeatures.displaySize}
+        </p>
+        <p class="all-data text-white">
             <span class="text-warning">Release Date :</span> ${date}
         </p>
         <p class="all-data text-white">
