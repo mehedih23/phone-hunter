@@ -21,3 +21,7 @@ body{
 .all-data {
     margin-top: -15px;
 }
+
+#more-items{
+    display: none;
+}
