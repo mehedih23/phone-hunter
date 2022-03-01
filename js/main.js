@@ -127,3 +127,7 @@ const details = (data) => {
     modalBody.appendChild(div);
     modalBody.appendChild(p);
 };
+
+
+
+
