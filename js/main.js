@@ -10,14 +10,14 @@ const commonEmptyText = (id) => {
     return document.getElementById(id).innerText = '';
  }
 
- 
+
 // Get Value from api //
 const getSearchValue = () => {
     const getSearchText = document.getElementById('search-txt').value;
     document.getElementById('search-txt').value = '';
     
     if (getSearchText == "") {
-        document.getElementById('error').innerText = 'Please Enter A Text';
+        document.getElementById('error').innerText = 'Please Enter Some Valid Text';
         
         commonEmptyText('phones-div');
         commonDisplay('more-items', false);
