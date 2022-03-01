@@ -1,38 +1,46 @@
+// Get Value from api //
 const getSearchValue = () => {
-
     const getSearchText = document.getElementById('search-txt').value;
     document.getElementById('search-txt').value = '';
     
     if (getSearchText == "") {
         document.getElementById('error').innerText = 'Please Enter A Text';
+        
         document.getElementById('phones-div').innerText = '';
         document.getElementById('more-items').style.display="none";
-
-    } else {           
         
+        
+    } else {
+
         const phoneUrl = `https://openapi.programming-hero.com/api/phones?search=${getSearchText}`;
         fetch(phoneUrl)
         .then(response => response.json())
         .then(data => loadData(data))
-        
+
+        document.getElementById('error').innerText = '';
+        document.getElementById('spinner').style.display = 'block';
     }
+
 };
-// getSearchValue();
 
 
+
+// Show Data On Display //
 const loadData = (data) => {
+    
     const lists = data.data;
     const first20Data = lists.slice(0, 20);
     if (data.status === false) {
         document.getElementById('error').innerText = 'Opps Sorry! No Phone Found';
+        document.getElementById('spinner').style.display = 'none';
         document.getElementById('phones-div').innerText = '';
-        // document.getElementById('more-items').innerHTML= '';
-    } else {
+        document.getElementById('more-items').style.display="none";
         
+    } else {
         document.getElementById('error').innerText = '';
-        // console.log(lists);
         const phonesDivison = document.getElementById('phones-div');
         phonesDivison.innerText = '';
+        document.getElementById('spinner').style.display = 'none';
         first20Data.forEach(element => {
             const div = document.createElement('div');
             div.classList.add('col');
@@ -55,6 +63,8 @@ const loadData = (data) => {
     };
 };
 
+
+// Get Single Phone Id //
 const moreDetails = (itemId) => {
     const idUrl = `https://openapi.programming-hero.com/api/phone/${itemId}`;
     fetch(idUrl)
@@ -62,6 +72,8 @@ const moreDetails = (itemId) => {
         .then(data => details(data.data))
 };
 
+
+// Get Single Phone Details //
 const details = (data) => {
     // console.log(data);
     const sensors = data.mainFeatures.sensors;

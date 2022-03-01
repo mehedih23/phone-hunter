@@ -39,11 +39,15 @@
                 <button class="btn btn-outline-dark float-end" type="button" id="search-btn"
                     onclick="getSearchValue()">Search</button>
             </div>
+
         </section>
         <!-- Search Section Ends Here -->
 
         <!-- Error Section Starts Here -->
         <section class="container mx-auto">
+            <div id="spinner" class="spinner-border text-warning mx-auto mt-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
             <h3 id="error" class="text-center text-danger my-3"></h3>
         </section>
         <!-- Error Section Ends Here -->
