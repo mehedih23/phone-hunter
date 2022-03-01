@@ -6,7 +6,8 @@ const getSearchValue = () => {
     if (getSearchText == "") {
         document.getElementById('error').innerText = 'Please Enter A Text';
         document.getElementById('phones-div').innerText = '';
-    
+        document.getElementById('more-items').style.display="none";
+
     } else {           
         
         const phoneUrl = `https://openapi.programming-hero.com/api/phones?search=${getSearchText}`;
