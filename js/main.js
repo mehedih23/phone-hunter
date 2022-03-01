@@ -1,3 +1,16 @@
+const commonDisplay = (id, block) => { 
+    if (block == true) {
+        return document.getElementById(id).style.display = 'block';
+    }
+    else{
+        return document.getElementById(id).style.display = 'none';
+    }
+}
+const commonEmptyText = (id) => { 
+    return document.getElementById(id).innerText = '';
+ }
+
+ 
 // Get Value from api //
 const getSearchValue = () => {
     const getSearchText = document.getElementById('search-txt').value;
@@ -6,8 +19,8 @@ const getSearchValue = () => {
     if (getSearchText == "") {
         document.getElementById('error').innerText = 'Please Enter A Text';
         
-        document.getElementById('phones-div').innerText = '';
-        document.getElementById('more-items').style.display="none";
+        commonEmptyText('phones-div');
+        commonDisplay('more-items', false);
         
         
     } else {
@@ -17,8 +30,8 @@ const getSearchValue = () => {
         .then(response => response.json())
         .then(data => loadData(data))
 
-        document.getElementById('error').innerText = '';
-        document.getElementById('spinner').style.display = 'block';
+        commonEmptyText('error');
+        commonDisplay('spinner', true);
     }
 
 };
@@ -32,15 +45,15 @@ const loadData = (data) => {
     const first20Data = lists.slice(0, 20);
     if (data.status === false) {
         document.getElementById('error').innerText = 'Opps Sorry! No Phone Found';
-        document.getElementById('spinner').style.display = 'none';
-        document.getElementById('phones-div').innerText = '';
-        document.getElementById('more-items').style.display="none";
+        commonDisplay('spinner', false);
+        commonEmptyText('phones-div');
+        commonDisplay('more-items', false);
         
     } else {
-        document.getElementById('error').innerText = '';
+        commonEmptyText('error');
         const phonesDivison = document.getElementById('phones-div');
         phonesDivison.innerText = '';
-        document.getElementById('spinner').style.display = 'none';
+        commonDisplay('spinner', false);
         first20Data.forEach(element => {
             const div = document.createElement('div');
             div.classList.add('col');
@@ -59,7 +72,7 @@ const loadData = (data) => {
             `;
             phonesDivison.appendChild(div);
         });
-        document.getElementById('more-items').style.display="block";
+        commonDisplay('more-items', true);
     };
 };
 
@@ -75,9 +88,8 @@ const moreDetails = (itemId) => {
 
 // Get Single Phone Details //
 const details = (data) => {
-    // console.log(data);
     const sensors = data.mainFeatures.sensors;
-    const date = (data.releaseDate) ? data.releaseDate : "Released 2021, September 24";
+    const date = (data.releaseDate) ? data.releaseDate : "No Date Found";
 
     const modalBody = document.getElementById('modal-body');
     modalBody.textContent = '';
